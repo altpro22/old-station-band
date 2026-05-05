@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
+    <title>OLD STATION BAND | SMART-ID</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <button id="btn-audio-control" class="audio-toggle" onclick="toggleAudioGlobal()">
+        <i id="audio-icon" class="fas fa-volume-up"></i>
+    </button>
+
+    <section id="portada-hub" class="main-hub">
+        <header class="magazine-header">
+            <h1 class="agency-name">OLD STATION BAND</h1>
+            <img src="assets/brand/logo-mini.png" alt="Logo" class="agency-logo">
+        </header>
+
+        <div class="mosaic-grid">
+            <div class="mosaic-item hero-block" onclick="openProfileZoom()">
+                <img id="profile-pic-img" src="assets/hero/main-photo.jpg" alt="Banda">
+                <div class="hero-overlay">
+                    <span class="edition-label">EST. 2004</span>
+                    <h2 class="hero-title">OLD STATION BAND</h2>
+                </div>
+            </div>
+
+            <div class="mosaic-item video-block" onclick="openYouTubeVideo()">
+                <div class="video-preview">
+                    <img src="assets/hero/video-thumb.jpg" alt="Video">
+                    <div class="yt-play-mini"><i class="fab fa-youtube"></i></div>
+                </div>
+                <span class="block-label">DA CLIC AL VIDEO DESPUÉS DE ABRIRLO</span>
+            </div>
+
+            <div class="mosaic-item lead-block">
+                <!-- Botón que ahora llama a la función directa corregida -->
+                <button class="btn-shiny-gold shine-effect" onclick="openWAChat()">
+                    CONTRATACIONES
+                </button>
+            </div>
+
+            <div class="mosaic-item share-block">
+                <button class="btn-magazine-share" onclick="shareExperienceRobust()">
+                    <i class="fas fa-share-alt"></i> RECOMIÉNDANOS Y COMPARTE
+                </button>
+            </div>
+
+            <div class="mosaic-item menu-block">
+                <div class="magazine-menu-grid">
+                    <button class="mag-btn" onclick="showAppContent('cat1')">
+                        <span class="num">01</span> CONÓCENOS
+                    </button>
+                    <button class="mag-btn" onclick="showAppContent('cat2')">
+                        <span class="num">02</span> GALERIA MUSICAL
+                    </button>
+                    <button class="mag-btn" onclick="showAppContent('cat3')">
+                        <span class="num">03</span> EVENTOS
+                    </button>
+                    <button class="mag-btn" onclick="showAppContent('cat4')">
+                        <span class="num">04</span> CONTACTO
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="credits-altpro-compact">
+            <span class="produced-by">SMART ID Produced by Alt Pro</span>
+            <a href="https://wa.me/524491472336" target="_blank" class="altpro-link">
+                <i class="fab fa-whatsapp"></i> 449 147 2336
+            </a>
+        </div>
+    </section>
+
+    <main id="dynamic-content-layer" class="content-overlay" style="display: none;">
+        <button class="btn-close-circular" onclick="closeAppContent()">×</button>
+        <section class="tab-pane" id="cat1-pane" style="display: none;"><div id="grid-cat1" class="polaroid-zigzag-grid"></div></section>
+        <section class="tab-pane" id="cat2-pane" style="display: none;"><div id="grid-cat2" class="polaroid-zigzag-grid"></div></section>
+        <section class="tab-pane" id="cat3-pane" style="display: none;"><div id="grid-cat3" class="polaroid-zigzag-grid"></div></section>
+        <section class="tab-pane" id="cat4-pane" style="display: none;">
+            <h2 class="gallery-title-white">CONTACTO</h2>
+            <div class="contact-panel-robust">
+                <p class="address-tag"><i class="fas fa-map-pin"></i> La Piedad, Michoacán, México</p>
+                <p class="address-tag"><i class="fas fa-phone"></i> 352 147 3400</p>
+                <div class="social-vertical-stack">
+                    <a id="link-fb-direct" href="#" target="_blank" class="stack-btn fb-color"><i class="fab fa-facebook"></i> FACEBOOK</a>
+                    <a id="link-maps-direct" href="#" target="_blank" class="stack-btn maps-color"><i class="fas fa-location-dot"></i> CÓMO LLEGAR</a>
+                    <a id="link-ig-direct" href="#" target="_blank" class="stack-btn ig-color"><i class="fab fa-instagram"></i> INSTAGRAM</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="lightbox" class="overlay-modal" style="display: none;" onclick="closeLightbox()">
+        <button class="btn-close-circular" onclick="closeLightbox()">×</button>
+        <div class="zoom-premium-content" onclick="event.stopPropagation()">
+            <button class="btn-nav-lightbox btn-prev" onclick="changeLightboxImage(-1)"><i class="fas fa-chevron-left"></i></button>
+            <div class="zoom-image-wrapper">
+                <img id="lightbox-image" src="" alt="Zoom">
+                <img src="assets/brand/logo-mini.png" class="mini-logo-zoom-overlay">
+            </div>
+            <button class="btn-nav-lightbox btn-next" onclick="changeLightboxImage(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <div id="text-zoom-modal" class="overlay-modal" style="display: none;" onclick="closeTextZoom()">
+        <div class="text-zoom-card" onclick="event.stopPropagation()">
+            <button class="btn-close-circular" style="top:-20px; right:-20px;" onclick="closeTextZoom()">×</button>
+            <div class="card-branding-header" style="display: flex; align-items: center;">
+                <img src="assets/brand/logo-mini.png" class="card-logo" style="width: 40px; margin-right: 10px;">
+                <h3 id="text-zoom-title"></h3>
+            </div>
+            <hr class="gold-divider" style="border: 0; border-top: 1px solid #d4af37; margin: 15px 0;">
+            <div id="text-zoom-content" style="white-space: pre-line;"></div>
+        </div>
+    </div>
+
+    <audio id="spot-intro" src="assets/sounds/spot-intro.mp3" preload="auto" loop></audio>
+    <audio id="sndFxClick" src="assets/sounds/clic.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
