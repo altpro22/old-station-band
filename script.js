@@ -4,7 +4,7 @@ const CONFIG = {
     facebook: "https://www.facebook.com/oldStationband", 
     instagram: "https://www.instagram.com/oldstationband?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
     maps: "https://maps.app.goo.gl/gEyF4uFKyhR14JyJA", 
-    youtubeUrl: "https://www.youtube.com/watch?v=ZS8MfMiXIIY",
+    youtubeUrl: "https://www.youtube.com/shorts/D6MdXW2gSXw",
     musicalVideos: [
         { name: "Long Cool Woman", link: "https://www.youtube.com/watch?v=ZS8MfMiXIIY" },
         { name: "Don't Bring Me Down", link: "https://www.youtube.com/watch?v=qEfmCHOOeoY" },
