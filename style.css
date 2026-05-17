@@ -12,8 +12,15 @@ body { background-color: var(--bg-premium); font-family: 'Montserrat', sans-seri
 .main-hub { height: 100vh; padding: 10px; display: flex; flex-direction: column; align-items: center; overflow-y: auto; }
 
 .magazine-header { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 10px 5px 10px 55px; border-bottom: 1px solid rgba(212,175,55,0.3); margin-bottom: 15px; }
+.header-title-container { display: flex; flex-direction: column; gap: 4px; }
 .agency-name { font-family: 'Bebas Neue'; font-size: 1.1rem; color: var(--brand-accent); letter-spacing: 2px; }
 .agency-logo { width: 30px; }
+
+/* Contenedor y tipografías para la descarga del audio */
+.download-track-container { display: flex; flex-direction: column; gap: 2px; margin-top: 4px; }
+.download-text { font-size: 0.55rem; color: #ffffff; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.btn-download-audio { display: inline-flex; align-items: center; justify-content: center; gap: 5px; background: transparent; border: 1px solid var(--brand-accent); color: var(--brand-accent); padding: 4px 10px; border-radius: 6px; font-size: 0.6rem; font-weight: 800; text-decoration: none; width: fit-content; transition: background 0.2s ease; }
+.btn-download-audio:active { background: rgba(212, 175, 55, 0.2); }
 
 .mosaic-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 12px; width: 100%; max-width: 380px; }
 
@@ -40,46 +47,28 @@ body { background-color: var(--bg-premium); font-family: 'Montserrat', sans-seri
 .mag-btn { background: #151515; border: 1px solid #333; color: #fff; padding: 12px; border-radius: 10px; text-align: left; font-family: 'Bebas Neue'; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
 .mag-btn .num { color: var(--brand-accent); font-style: italic; font-size: 0.8rem; }
 
-.credits-altpro-compact { margin-top: 15px; padding: 5px; display: flex; flex-direction: column; align-items: center; gap: 5px; width: 100%; }
+/* Estilos de los dos nuevos botones de marca personalizados */
+.custom-actions-block { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 10px; margin-top: 5px; width: 100%; }
+.btn-custom-action { width: 100%; height: 50px; background: #000000; border-radius: 12px; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer; transition: background 0.2s ease, border-color 0.2s ease; }
+.btn-recommended-businesses { border: 2px solid var(--brand-accent); color: var(--brand-accent); }
+.btn-recommended-businesses:active { background: rgba(212, 175, 55, 0.15); }
+.btn-vip-promotions { border: 2px solid #ffffff; color: #ffffff; }
+.btn-vip-promotions:active { background: rgba(255, 255, 255, 0.15); }
+
+/* Créditos reposicionados justo debajo del botón VIP en flujo directo */
+.credits-altpro-compact { margin-top: 15px; padding: 5px 5px 15px 5px; display: flex; flex-direction: column; align-items: center; gap: 5px; width: 100%; }
 .produced-by { font-size: 0.55rem; font-weight: 800; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; }
 .altpro-link { background: #000; border: 1px solid #25D366; color: #25D366; padding: 5px 15px; border-radius: 20px; font-weight: 900; text-decoration: none; display: flex; align-items: center; gap: 8px; font-size: 0.65rem; }
 
-/* 1) MEJORA: TITULO SUPERIOR IZQUIERDO BLANCO */
-.gallery-title-white {
-    width: 100%;
-    text-align: left;
-    padding: 0 20px;
-    margin-bottom: 10px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    color: #ffffff; /* Blanco solicitado */
-    letter-spacing: 2px;
-}
+.gallery-title-white { width: 100%; text-align: left; padding: 0 20px; margin-bottom: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: #ffffff; letter-spacing: 2px; }
 
 .content-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 5000; padding: 60px 10px 10px; overflow-y: auto; display: flex; flex-direction: column; align-items: center; }
-
 .polaroid-zigzag-grid { display: flex; flex-direction: column; gap: 15px; width: 100%; align-items: center; padding-bottom: 30px; }
 
-.quad-row-grid { 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 10px; 
-    width: 95%; 
-    max-width: 360px; 
-    justify-items: center;
-}
+.quad-row-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 95%; max-width: 360px; justify-items: center; }
 
-.polaroid-item { 
-    background: #fff; 
-    padding: 4px 4px 12px; 
-    width: 100%; 
-    max-width: 105px; 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5); 
-    flex-shrink: 0; 
-    transition: transform 0.3s ease;
-}
+.polaroid-item { background: #fff; padding: 4px 4px 12px; width: 100%; max-width: 105px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); flex-shrink: 0; transition: transform 0.3s ease; }
 .polaroid-item img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
-
 .pos-left { transform: rotate(-2deg); } .pos-right { transform: rotate(2deg); }
 
 .btn-details-gold { background: #000; color: var(--brand-accent); border: 2px solid var(--brand-accent); padding: 10px 20px; border-radius: 8px; font-weight: 900; font-size: 0.7rem; margin: 8px 0; width: 90%; max-width: 320px; text-transform: uppercase; }
@@ -89,6 +78,9 @@ body { background-color: var(--bg-premium); font-family: 'Montserrat', sans-seri
 .zoom-image-wrapper { position: relative; display: inline-flex; align-items: center; justify-content: center; max-width: 95%; max-height: 75vh; }
 #lightbox-image { display: block; width: 100%; height: auto; max-height: 75vh; object-fit: contain; border: 3px solid var(--brand-accent); border-radius: 10px; }
 .mini-logo-zoom-overlay { position: absolute; top: 10px; right: 10px; width: 35px; filter: drop-shadow(0 0 5px rgba(0,0,0,0.8)); z-index: 9001; pointer-events: none; }
+
+.brand-custom-modal .zoom-image-wrapper { max-width: 90%; max-height: 80vh; }
+.brand-modal-img { display: block; width: 100%; height: auto; max-height: 80vh; object-fit: contain; border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); }
 
 .btn-nav-lightbox { background: rgba(0,0,0,0.5); border: 1px solid rgba(212,175,55,0.5); color: var(--brand-accent); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; top: 50%; transform: translateY(-50%); z-index: 9005; cursor: pointer; transition: all 0.3s ease; }
 .btn-nav-lightbox i { font-size: 1.5rem; }
@@ -112,11 +104,4 @@ body { background-color: var(--bg-premium); font-family: 'Montserrat', sans-seri
 
 .btn-close-circular { position: absolute; top: 15px; right: 15px; background: var(--brand-accent); color: #000; width: 40px; height: 40px; border-radius: 50%; border: 3px solid #fff; z-index: 10000; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; }
 
-.hide-nav-arrows .btn-nav-lightbox {
-    display: none !important;
-}
-
-/* Nuevos Estilos Re-añadidos para Galería de Video */
-.video-musical-grid { display: flex; flex-direction: column; gap: 12px; width: 90%; max-width: 340px; }
-.btn-video-musical { width: 100%; background: #111; border: 2px solid var(--brand-accent); color: #fff; padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; font-family: 'Bebas Neue'; font-size: 1.1rem; text-transform: uppercase; transition: all 0.3s ease; }
-.btn-video-musical i { color: #FF0000; font-size: 1.4rem; }
+.hide-nav-arrows .btn-nav-lightbox { display: none !important; }

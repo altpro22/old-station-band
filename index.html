@@ -3,24 +3,20 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
-    <title>OLD STATION BAND | BOCA EN BOCA CARD</title>
-
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://altpro22.github.io/old-station-band/" />
-    <meta property="og:title" content="OLD STATION BAND | BOCA EN BOCA CARD" />
-    <meta property="og:description" content="Tributo al rock de las décadas 70s y 80s. Fundada en La Piedad Michoacán en el año 2004." />
     
-    <meta property="og:image" content="https://altpro22.github.io/old-station-band/assets/brand/og_old.jpg" />
-    <meta property="og:image:secure_url" content="https://altpro22.github.io/old-station-band/assets/brand/og_old.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://altpro22.github.io/Jean-Luis-David/" />
+    <meta property="og:title" content="Jean Louis David México | Magazine Edition" />
+    <meta property="og:description" content="Descubre la vanguardia en estilismo y exclusividad. Agenda tu cita en nuestra edición de revista digital." />
+    
+    <meta property="og:image" content="https://altpro22.github.io/Jean-Luis-David/assets/brand/og_jean.jpg?v=1.1" />
+    <meta property="og:image:secure_url" content="https://altpro22.github.io/Jean-Luis-David/assets/brand/og_jean.jpg?v=1.1" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="OLD STATION BAND | BOCA EN BOCA CARD" />
-    <meta name="twitter:description" content="Tributo al rock de las décadas 70s y 80s." />
-    <meta name="twitter:image" content="https://altpro22.github.io/old-station-band/assets/brand/og_old.jpg" />
-
+    <title>Jean Louis David México | BOCA EN BOCA CARD</title>
+    
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
@@ -33,16 +29,24 @@
 
     <section id="portada-hub" class="main-hub">
         <header class="magazine-header">
-            <h1 class="agency-name">OLD STATION BAND</h1>
+            <div class="header-title-container">
+                <h1 class="agency-name">Jean Louis David México</h1>
+                <div class="download-track-container">
+                    <p class="download-text">Descarga nuestra canción</p>
+                    <a href="assets/sounds/spot-intro.mp3" download="spot-intro.mp3" class="btn-download-audio" onclick="playClickSound()">
+                        <i class="fas fa-download"></i> DESCARGAR
+                    </a>
+                </div>
+            </div>
             <img src="assets/brand/logo-mini.png" alt="Logo" class="agency-logo">
         </header>
 
         <div class="mosaic-grid">
             <div class="mosaic-item hero-block" onclick="openProfileZoom()">
-                <img id="profile-pic-img" src="assets/hero/main-photo.jpg" alt="Banda">
+                <img id="profile-pic-img" src="assets/hero/main-photo.jpg" alt="Mona Lisa">
                 <div class="hero-overlay">
                     <span class="edition-label">BOCA EN BOCA CARD</span>
-                    <h2 class="hero-title">OLD STATION BAND</h2>
+                    <h2 class="hero-title">Jean Louis David México</h2>
                 </div>
             </div>
 
@@ -51,12 +55,12 @@
                     <img src="assets/hero/video-thumb.jpg" alt="Video">
                     <div class="yt-play-mini"><i class="fab fa-youtube"></i></div>
                 </div>
-                <span class="block-label">DA CLIC AL VIDEO DESPUÉS DE ABRIRLO</span>
+                <span class="block-label">DA CLIC AL VIDEO DESPUES DE ABRIRLO</span>
             </div>
 
             <div class="mosaic-item lead-block">
                 <button class="btn-shiny-gold shine-effect" onclick="openWAChat()">
-                    CONTRATACIONES
+                    AGENDA TU CITA AQUÍ
                 </button>
             </div>
 
@@ -72,15 +76,24 @@
                         <span class="num">01</span> CONÓCENOS
                     </button>
                     <button class="mag-btn" onclick="showAppContent('cat2')">
-                        <span class="num">02</span> GALERIA MUSICAL
+                        <span class="num">02</span> SERVICIOS
                     </button>
                     <button class="mag-btn" onclick="showAppContent('cat3')">
-                        <span class="num">03</span> EVENTOS
+                        <span class="num">03</span> EXCLUSIVIDAD
                     </button>
                     <button class="mag-btn" onclick="showAppContent('cat4')">
                         <span class="num">04</span> CONTACTO
                     </button>
                 </div>
+            </div>
+            
+            <div class="mosaic-item custom-actions-block">
+                <button class="btn-custom-action btn-recommended-businesses" onclick="openBrandModal('modal-negocios')">
+                    NEGOCIOS RECOMENDADOS
+                </button>
+                <button class="btn-custom-action btn-vip-promotions" onclick="openBrandModal('modal-promociones')">
+                    PROMOCIONES PARA CLIENTES VIP
+                </button>
             </div>
         </div>
 
@@ -92,16 +105,34 @@
         </div>
     </section>
 
+    <div id="modal-negocios" class="overlay-modal brand-custom-modal" style="display: none;" onclick="closeBrandModal('modal-negocios')">
+        <button class="btn-close-circular" onclick="closeBrandModal('modal-negocios')">×</button>
+        <div class="zoom-premium-content" onclick="event.stopPropagation()">
+            <div class="zoom-image-wrapper">
+                <img src="assets/brand/negocios.jpg" alt="Negocios Recomendados" class="brand-modal-img">
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-promociones" class="overlay-modal brand-custom-modal" style="display: none;" onclick="closeBrandModal('modal-promociones')">
+        <button class="btn-close-circular" onclick="closeBrandModal('modal-promociones')">×</button>
+        <div class="zoom-premium-content" onclick="event.stopPropagation()">
+            <div class="zoom-image-wrapper">
+                <img src="assets/brand/promociones.jpg" alt="Promociones VIP" class="brand-modal-img">
+            </div>
+        </div>
+    </div>
+
     <main id="dynamic-content-layer" class="content-overlay" style="display: none;">
         <button class="btn-close-circular" onclick="closeAppContent()">×</button>
-        <section class="tab-pane" id="cat1-pane" style="display: none;"><div id="grid-cat1" class="polaroid-zigzag-grid"></div></section>
-        <section class="tab-pane" id="cat2-pane" style="display: none;"><div id="grid-cat2" class="polaroid-zigzag-grid"></div></section>
-        <section class="tab-pane" id="cat3-pane" style="display: none;"><div id="grid-cat3" class="polaroid-zigzag-grid"></div></section>
+        <section class="tab-pane" id="cat1-pane" style="display: none;"><h2 class="pane-title"></h2><div id="grid-cat1" class="polaroid-zigzag-grid"></div></section>
+        <section class="tab-pane" id="cat2-pane" style="display: none;"><h2 class="pane-title"></h2><div id="grid-cat2" class="polaroid-zigzag-grid"></div></section>
+        <section class="tab-pane" id="cat3-pane" style="display: none;"><h2 class="pane-title"></h2><div id="grid-cat3" class="polaroid-zigzag-grid"></div></section>
         <section class="tab-pane" id="cat4-pane" style="display: none;">
-            <h2 class="gallery-title-white">CONTACTO</h2>
+            <h2 class="pane-title">CONTACTO</h2>
             <div class="contact-panel-robust">
-                <p class="address-tag"><i class="fas fa-map-pin"></i> La Piedad, Michoacán, México</p>
-                <p class="address-tag"><i class="fas fa-phone"></i> 352 147 3400</p>
+                <p class="address-tag"><i class="fas fa-map-pin"></i> Campos Elíseos 218, Polanco, Ciudad de México</p>
+                <p class="address-tag"><i class="fas fa-phone"></i> 55 5292 4717</p>
                 <div class="social-vertical-stack">
                     <a id="link-fb-direct" href="#" target="_blank" class="stack-btn fb-color"><i class="fab fa-facebook"></i> FACEBOOK</a>
                     <a id="link-maps-direct" href="#" target="_blank" class="stack-btn maps-color"><i class="fas fa-location-dot"></i> CÓMO LLEGAR</a>

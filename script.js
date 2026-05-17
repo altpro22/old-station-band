@@ -1,28 +1,21 @@
 const CONFIG = {
-    whatsapp: "3521473400",
-    // CORRECCIÓN: URL de Facebook verificada
-    facebook: "https://www.facebook.com/oldStationband", 
-    instagram: "https://www.instagram.com/oldstationband?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-    maps: "https://maps.app.goo.gl/gEyF4uFKyhR14JyJA", 
-    youtubeUrl: "https://www.youtube.com/shorts/D6MdXW2gSXw",
-    musicalVideos: [
-        { name: "Long Cool Woman", link: "https://www.youtube.com/watch?v=ZS8MfMiXIIY" },
-        { name: "Don't Bring Me Down", link: "https://www.youtube.com/watch?v=qEfmCHOOeoY" },
-        { name: "La Grange", link: "https://www.youtube.com/watch?v=uQTgulMwCC4" },
-        { name: "Talking In Your Sleep", link: "https://www.youtube.com/watch?v=ufkj80qcJ58" }
-    ],
+    whatsapp: "5552924717",
+    facebook: "https://www.facebook.com/profile.php?id=61575004556983&sk=directory_contact_info",
+    instagram: "https://www.instagram.com/jldavid_mx/",
+    maps: "https://maps.app.goo.gl/HN7bNvnZ56yEZTP76", 
+    youtubeUrl: "https://www.youtube.com/shorts/7NWN73CYBlY",
     textos: {
         cat1: { 
-            t: "CONÓCENOS", 
-            c: "Old Station Band es una reconocida banda dedicada a rendir tributo al rock de las décadas 70s y 80s. Fundada en La Piedad Michoacán en el año 2004." 
+            t: "NUESTRA HISTORIA", 
+            c: "Nacemos de la pasión por la perfección estética. En nuestro santuario, cada trazo y cada corte se ejecuta con la maestría de un artist, garantizando que tu imagen refleje la elegancia y el poder que llevas dentro. Somos más que un salón, somos tu aliado en la creación de una marca personal inolvidable." 
         },
         cat2: { 
-            t: "GALERIA MUSICAL", 
-            c: "Disfruta de nuestros covers más icónicos grabados en vivo. José Luis Barba: Voz y teclados./ Emmanuel Martínez: Voz y guitarra electroacústica./ Damián Guardado: Guitarra líder./ Adrián Rodríguez: Batería./ Juan Medina: Bajo eléctrico."
+            t: "SERVICIOS EXCLUSIVOS", 
+            c: "Desde colorimetría avanzada que respeta la salud de tu fibra capilar, hasta diseños de corte vanguardistas. Nuestro equipo domina las tendencias globales de Balayage, tratamientos de reconstrucción profunda y estilismo para eventos de alto nivel. Aquí, la calidad no es un servicio, es nuestro estándar innegociable." 
         },
         cat3: { 
-            t: "EVENTOS", 
-            c: "Hemos sido galardonados con el 'Sol de Oro' como la 'Mejor Banda Tributo Rock de México' y 'Banda Revelación 2022'." 
+            t: "CLUB DE EXCLUSIVIDAD", 
+            c: "La exclusividad merece reconocimiento. Disfruta de nuestras promociones diseñadas para la mujer Mona Lisa: \n\n• LUNES DE COLOR: 20% de descuento en servicios químicos.\n• MARTES DE HIDRATACIÓN: Tratamiento VIP en cada corte.\n• JUEVES DE AMIGAS: Promociones grupales exclusivas." 
         }
     }
 };
@@ -61,33 +54,21 @@ function renderGallery(cat) {
     titleHeader.innerText = CONFIG.textos[cat].t;
     grid.appendChild(titleHeader);
 
-    if(cat === 'cat2') {
-        const videoGrid = document.createElement('div');
-        videoGrid.className = 'video-musical-grid';
-        CONFIG.musicalVideos.forEach(vid => {
-            const vBtn = document.createElement('button');
-            vBtn.className = 'btn-video-musical';
-            vBtn.innerHTML = `<span>${vid.name}</span> <i class="fab fa-youtube"></i>`;
-            vBtn.onclick = () => { playClick(); window.open(vid.link, '_blank'); };
-            videoGrid.appendChild(vBtn);
-        });
-        grid.appendChild(videoGrid);
-    } else {
-        const imgCount = (cat === 'cat1' || cat === 'cat3') ? 6 : 4;
-        const imgs = [];
-        for(let i = 1; i <= imgCount; i++) {
-            imgs.push(`assets/gallery/${cat}/${i}.jpg`);
-        }
-        
-        const rowGrid = document.createElement('div');
-        rowGrid.className = 'quad-row-grid';
-        
-        imgs.forEach((src, index) => {
-            const posClass = (index % 2 === 0) ? 'pos-left' : 'pos-right';
-            rowGrid.appendChild(createPol(src, posClass, imgs));
-        });
-        grid.appendChild(rowGrid);
+    const imgCount = (cat === 'cat1' || cat === 'cat2' || cat === 'cat3') ? 6 : 4;
+    const imgs = [];
+    for(let i = 1; i <= imgCount; i++) {
+        imgs.push(`assets/gallery/${cat}/${i}.jpg`);
     }
+    
+    const rowGrid = document.createElement('div');
+    rowGrid.className = 'quad-row-grid';
+    
+    imgs.forEach((src, index) => {
+        const posClass = (index % 2 === 0) ? 'pos-left' : 'pos-right';
+        rowGrid.appendChild(createPol(src, posClass, imgs));
+    });
+    
+    grid.appendChild(rowGrid);
 
     const btn = document.createElement('button');
     btn.className = 'btn-details-gold'; 
@@ -108,10 +89,16 @@ function openLightbox(src, arr, hideControls) {
     playClick();
     currentGallery = arr;
     currentIndex = arr.indexOf(src);
+    
     const lightboxEl = document.getElementById('lightbox');
     const imgEl = document.getElementById('lightbox-image');
-    if(hideControls) { lightboxEl.classList.add('hide-nav-arrows'); } 
-    else { lightboxEl.classList.remove('hide-nav-arrows'); }
+    
+    if(hideControls) {
+        lightboxEl.classList.add('hide-nav-arrows');
+    } else {
+        lightboxEl.classList.remove('hide-nav-arrows');
+    }
+    
     imgEl.src = src;
     lightboxEl.style.display = 'flex';
 }
@@ -134,10 +121,28 @@ function closeLightbox() { document.getElementById('lightbox').style.display = '
 function closeAppContent() { document.getElementById('dynamic-content-layer').style.display = 'none'; }
 function closeTextZoom() { document.getElementById('text-zoom-modal').style.display = 'none'; }
 
-// CORRECCIÓN 1: Directo a WhatsApp sin flyer previo
+function openBrandModal(modalId) {
+    playClick();
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'flex';
+    }
+}
+
+function closeBrandModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+function playClickSound() {
+    playClick();
+}
+
 function openWAChat() {
     playClick();
-    window.open(`https://wa.me/${CONFIG.whatsapp}?text=Hola, deseo contratar a OLD STATION BAND.`, '_blank');
+    window.open(`https://wa.me/${CONFIG.whatsapp}?text=Hola, deseo agendar una cita.`, '_blank');
 }
 
 function toggleAudioGlobal() {
@@ -154,10 +159,10 @@ function playClick() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // CORRECCIÓN 2: El link de Facebook ahora apunta a CONFIG.facebook actualizado
     const fbLink = document.getElementById('link-fb-direct');
     const mapsLink = document.getElementById('link-maps-direct');
     const igLink = document.getElementById('link-ig-direct');
+    
     if(fbLink) fbLink.href = CONFIG.facebook;
     if(mapsLink) mapsLink.href = CONFIG.maps;
     if(igLink) igLink.href = CONFIG.instagram;
@@ -169,6 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function shareExperienceRobust() {
-    try { await navigator.share({ title: 'OLD STATION BAND', url: window.location.href }); }
+    try { await navigator.share({ title: 'Salón Express Mona Lisa', url: window.location.href }); }
     catch { alert("Enlace copiado al portapapeles."); }
 }
