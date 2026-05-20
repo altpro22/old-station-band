@@ -1,23 +1,29 @@
 const CONFIG = {
-    whatsapp: "5552924717",
-    facebook: "https://www.facebook.com/profile.php?id=61575004556983&sk=directory_contact_info",
-    instagram: "https://www.instagram.com/jldavid_mx/",
-    maps: "https://maps.app.goo.gl/HN7bNvnZ56yEZTP76", 
-    youtubeUrl: "https://www.youtube.com/shorts/7NWN73CYBlY",
+    whatsapp: "3522431415",
+    facebook: "https://www.facebook.com/oldstationband",
+    instagram: "https://www.instagram.com/oldstationband/",
+    maps: "https://maps.app.goo.gl/gM3RDe5xeSCH1jqw6", 
+    youtubeUrl: "https://www.youtube.com/shorts/D6MdXW2gSXw",
     textos: {
         cat1: { 
             t: "NUESTRA HISTORIA", 
-            c: "Nacemos de la pasión por la perfección estética. En nuestro santuario, cada trazo y cada corte se ejecuta con la maestría de un artist, garantizando que tu imagen refleje la elegancia y el poder que llevas dentro. Somos más que un salón, somos tu aliado en la creación de una marca personal inolvidable." 
+            c: "Old Station Band es una reconocida agrupación mexicana originaria de La Piedad, Michoacán, fundada en 2004 por el músico y productor José Luis Barba (primera voz y tecladista). Destacan por su fiel ejecución de clásicos del rock de los años 60, 70 y 80" 
         },
         cat2: { 
-            t: "SERVICIOS EXCLUSIVOS", 
-            c: "Desde colorimetría avanzada que respeta la salud de tu fibra capilar, hasta diseños de corte vanguardistas. Nuestro equipo domina las tendencias globales de Balayage, tratamientos de reconstrucción profunda y estilismo para eventos de alto nivel. Aquí, la calidad no es un servicio, es nuestro estándar innegociable." 
+            t: "VIDEOS MUSICALES", 
+            c: "Reconocimiento Nacional: En 2022, la banda fue galardonada con el premio \"Sol de Oro\" otorgado por el Círculo Nacional de Periodistas (CINPE) en la Ciudad de México, en las categorías de Mejor Banda Revelación y Mejor Banda Tributo Rock de México." 
         },
         cat3: { 
             t: "CLUB DE EXCLUSIVIDAD", 
-            c: "La exclusividad merece reconocimiento. Disfruta de nuestras promociones diseñadas para la mujer Mona Lisa: \n\n• LUNES DE COLOR: 20% de descuento en servicios químicos.\n• MARTES DE HIDRATACIÓN: Tratamiento VIP en cada corte.\n• JUEVES DE AMIGAS: Promociones grupales exclusivas." 
+            c: "Nuestro repertorio abarca tributos a las grandes leyendas del rock en inglés y español, abarcando íconos como The Beatles, Queen y Bon Jovi:" 
         }
-    }
+    },
+    videosPlaylist: [
+        { title: "Long Cool Woman In a Black Dress", url: "https://www.youtube.com/watch?v=ZS8MfMiXIIY" },
+        { title: "Talking In Your Sleep", url: "https://www.youtube.com/watch?v=ufkj80qcJ58" },
+        { title: "La Grange (ZZ Top)", url: "https://www.youtube.com/watch?v=uQTgulMwCC4" },
+        { title: "Ghostbusters", url: "https://www.youtube.com/watch?v=qw0SyiahAL8" }
+    ]
 };
 
 let currentGallery = [];
@@ -54,21 +60,35 @@ function renderGallery(cat) {
     titleHeader.innerText = CONFIG.textos[cat].t;
     grid.appendChild(titleHeader);
 
-    const imgCount = (cat === 'cat1' || cat === 'cat2' || cat === 'cat3') ? 6 : 4;
-    const imgs = [];
-    for(let i = 1; i <= imgCount; i++) {
-        imgs.push(`assets/gallery/${cat}/${i}.jpg`);
+    if (cat === 'cat2') {
+        // En lugar de imágenes, renderizamos la botonera de 4 canciones
+        CONFIG.videosPlaylist.forEach(video => {
+            const vBtn = document.createElement('a');
+            vBtn.className = 'btn-video-rock';
+            vBtn.href = video.url;
+            vBtn.target = '_blank';
+            vBtn.onclick = () => { playClick(); };
+            vBtn.innerHTML = `<span>${video.title}</span> <i class="fab fa-youtube"></i>`;
+            grid.appendChild(vBtn);
+        });
+    } else {
+        // Mantiene la rejilla original intacta para las otras secciones
+        const imgCount = (cat === 'cat1' || cat === 'cat3') ? 6 : 4;
+        const imgs = [];
+        for(let i = 1; i <= imgCount; i++) {
+            imgs.push(`assets/gallery/${cat}/${i}.jpg`);
+        }
+        
+        const rowGrid = document.createElement('div');
+        rowGrid.className = 'quad-row-grid';
+        
+        imgs.forEach((src, index) => {
+            const posClass = (index % 2 === 0) ? 'pos-left' : 'pos-right';
+            rowGrid.appendChild(createPol(src, posClass, imgs));
+        });
+        
+        grid.appendChild(rowGrid);
     }
-    
-    const rowGrid = document.createElement('div');
-    rowGrid.className = 'quad-row-grid';
-    
-    imgs.forEach((src, index) => {
-        const posClass = (index % 2 === 0) ? 'pos-left' : 'pos-right';
-        rowGrid.appendChild(createPol(src, posClass, imgs));
-    });
-    
-    grid.appendChild(rowGrid);
 
     const btn = document.createElement('button');
     btn.className = 'btn-details-gold'; 
